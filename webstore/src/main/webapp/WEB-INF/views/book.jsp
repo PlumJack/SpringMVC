@@ -28,7 +28,7 @@
 					<strong>Wrote by</strong>: ${book.authors}
 				</p>
 				<p>
-					<a href="<spring:url value="/books" />" class="btn btn-default">
+					<a href="<spring:url value="/books/all" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back
 					</a>
 
