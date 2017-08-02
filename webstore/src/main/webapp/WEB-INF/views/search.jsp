@@ -7,35 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Book</title>
+<title>Search</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Book info</h1>
+				<h1>Search for a book</h1>
 			</div>
 		</div>
 	</section>
 	<section class="container">
-		<div class="row">
-			<div class="col-md-5">
-				<h3>${book.id}</h3>
-				<p>
-					<span><strong>Book title: </strong>${book.title}</span>
-				</p>
-				<p>
-					<strong>Wrote by</strong>: ${book.authors}
-				</p>
-				<p>
-					<a href="<spring:url value="/books/all" />" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span> back
-					</a>
-
-				</p>
-
-			</div>
-		</div>
+		 <form action="/webstore/books/searchForBooks" method="get">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" name="title">
+  </div>
+    <div class="form-group">
+    <label for="authors">Authors:</label>
+    <input type="text" class="form-control" id="authors" name="authors">
+  </div>
+  <button type="submit">Submit</button>
+</form> 
 	</section>
 </body>
 </html>

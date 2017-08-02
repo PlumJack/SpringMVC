@@ -57,10 +57,39 @@ public class BookController {
 	public ModelAndView bookDetails(@RequestParam("id") int bookId) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		List<BookTo> listOfAllBooks = bookService.findAllBooks();
-		BookTo theBook = listOfAllBooks.stream().filter(u -> u.getId().equals(new Long(bookId))).findFirst().orElse(null);
+		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
+		//BookTo theBook = listOfAllBooks.stream().filter(u -> u.getId().equals(new Long(bookId))).findFirst().orElse(null);
+		//modelAndView.setViewName(ViewNames.BOOK);
+		//modelAndView.addObject(ModelConstants.BOOK, theBook);
+		
+		BookTo theBook = bookService.findBookById(new Long(bookId));
 		modelAndView.setViewName(ViewNames.BOOK);
 		modelAndView.addObject(ModelConstants.BOOK, theBook);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping("/search")
+	public ModelAndView searchBooks() {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// TODO: implement method gathering and displaying all books
+		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
+		modelAndView.setViewName(ViewNames.SEARCH);
+		//modelAndView.addObject(ModelConstants.BOOK_LIST, listOfAllBooks);
+
+		return modelAndView;
+	}
+	
+	@RequestMapping("/searchForBooks")
+	public ModelAndView searchForBooks(@RequestParam("title") String title, @RequestParam("authors") String authors) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		// TODO: implement method gathering and displaying all books
+		//List<BookTo> foundBooks = bookService.findBooksByTitle(title);
+		List<BookTo> foundBooks = bookService.findBooksByTitleAndAuthor(title, authors);
+		modelAndView.setViewName(ViewNames.BOOKS);
+		modelAndView.addObject(ModelConstants.BOOK_LIST, foundBooks);
 
 		return modelAndView;
 	}

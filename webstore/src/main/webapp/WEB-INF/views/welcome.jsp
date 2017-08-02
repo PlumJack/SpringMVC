@@ -51,5 +51,22 @@
 			</div>
 		</div>
 	</section>
+	<section class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3>Search book</h3>
+						<p>Search for a book</p>
+						<p>
+							<a href="/webstore/books/search" class="btn btn-default"> <span
+								class="glyphicon-info-sign glyphicon" /></span> Search book
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 </html>
