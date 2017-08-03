@@ -12,8 +12,8 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Error</h1>
-				<p>${errorMessage}</p>
+				<h1>Book deleted</h1>
+				<p>The book has been deleted.</p>
 			</div>
 		</div>
 	</section>
@@ -22,10 +22,10 @@
 			<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 				<div class="thumbnail">
 					<div class="caption">
-						<h3>Main Page</h3>
-						<p>Go back to main page</p>
+						<h3>All books</h3>
+						<p>Go back to all books</p>
 						<p>
-							<a href="/webstore" class="btn btn-default"> <span
+							<a href="/webstore/books/all" class="btn btn-default"> <span
 								class="glyphicon glyphicon-arrow-left" /></span> Go Back
 							</a>
 						</p>

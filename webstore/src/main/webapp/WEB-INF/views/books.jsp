@@ -33,7 +33,14 @@
 								<a
 									href=" <spring:url value="/books/book?id=${book.id}" /> "
 									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Details
+									class="glyphicon-info-sign glyphicon" /></span> Details		
+								</a>
+							</p>
+							<p>
+								<a
+									href=" <spring:url value="/books/deleteBook?id=${book.id}" /> "
+									class="btn btn-primary"> 
+									<span class="glyphicon glyphicon-trash" /></span> Delete
 								</a>
 							</p>
 

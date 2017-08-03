@@ -94,6 +94,22 @@ public class BookController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/deleteBook")
+	public ModelAndView searchForBooks(@RequestParam("id") Long id) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		bookService.deleteBook(id);
+		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
+		//modelAndView.setViewName(ViewNames.BOOKS);
+		//modelAndView.addObject(ModelConstants.BOOK_LIST, listOfAllBooks);
+		//BookTo theBook = bookService.findBookById(id);
+		modelAndView.setViewName(ViewNames.BOOKDELETED);
+		//modelAndView.addObject(ModelConstants.BOOK, theBook);
+
+		
+		return modelAndView;
+	}
+	
 	// TODO: Implement GET / POST methods for "add book" functionality
 
 	/**

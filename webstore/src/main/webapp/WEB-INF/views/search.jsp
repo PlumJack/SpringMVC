@@ -27,7 +27,7 @@
     <label for="authors">Authors:</label>
     <input type="text" class="form-control" id="authors" name="authors">
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn btn-default">Submit</button>
 </form> 
 	</section>
 </body>
