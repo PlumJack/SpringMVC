@@ -2,6 +2,7 @@ package pl.spring.demo.controller;
 
 import java.security.Principal;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,9 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
+		
+		SecurityContextHolder.clearContext();
+
 		return ViewNames.LOGIN;
 	}
 
@@ -35,7 +39,7 @@ public class LoginController {
 	public ModelAndView accesssDenied(Principal user) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName(ViewNames._403);
-		String message = "Sorry, user: " + user.getName() + " must not access this page.";
+		String message = "Sorry, user: " + user.getName() + " is not allowed to access this page.";
 		model.addObject(ModelConstants.ERROR_MESSAGE, message);
 		
 		// TODO: implement mechanism redirecting to new custom page _403

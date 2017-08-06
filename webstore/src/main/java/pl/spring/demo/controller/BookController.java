@@ -57,11 +57,6 @@ public class BookController {
 	public ModelAndView bookDetails(@RequestParam("id") int bookId) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
-		//BookTo theBook = listOfAllBooks.stream().filter(u -> u.getId().equals(new Long(bookId))).findFirst().orElse(null);
-		//modelAndView.setViewName(ViewNames.BOOK);
-		//modelAndView.addObject(ModelConstants.BOOK, theBook);
-		
 		BookTo theBook = bookService.findBookById(new Long(bookId));
 		modelAndView.setViewName(ViewNames.BOOK);
 		modelAndView.addObject(ModelConstants.BOOK, theBook);
@@ -74,9 +69,7 @@ public class BookController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		// TODO: implement method gathering and displaying all books
-		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
 		modelAndView.setViewName(ViewNames.SEARCH);
-		//modelAndView.addObject(ModelConstants.BOOK_LIST, listOfAllBooks);
 
 		return modelAndView;
 	}
@@ -86,7 +79,6 @@ public class BookController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		// TODO: implement method gathering and displaying all books
-		//List<BookTo> foundBooks = bookService.findBooksByTitle(title);
 		List<BookTo> foundBooks = bookService.findBooksByTitleAndAuthor(title, authors);
 		modelAndView.setViewName(ViewNames.BOOKS);
 		modelAndView.addObject(ModelConstants.BOOK_LIST, foundBooks);
@@ -99,13 +91,7 @@ public class BookController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		bookService.deleteBook(id);
-		//List<BookTo> listOfAllBooks = bookService.findAllBooks();
-		//modelAndView.setViewName(ViewNames.BOOKS);
-		//modelAndView.addObject(ModelConstants.BOOK_LIST, listOfAllBooks);
-		//BookTo theBook = bookService.findBookById(id);
 		modelAndView.setViewName(ViewNames.BOOKDELETED);
-		//modelAndView.addObject(ModelConstants.BOOK, theBook);
-
 		
 		return modelAndView;
 	}

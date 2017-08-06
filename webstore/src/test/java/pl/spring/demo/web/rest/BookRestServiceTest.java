@@ -49,29 +49,19 @@ public class BookRestServiceTest {
 	public void testShouldGetAllBooks() throws Exception {
 
 		// given:
-		final BookTo bookTo1 = new BookTo(1L, "title", "Author1", BookStatus.FREE);
+		//final BookTo bookTo1 = new BookTo(1L, "title", "Author1", BookStatus.FREE);
+		final BookTo bookTo1 = new BookTo(1L, "First book", "Jan Kowalski", BookStatus.FREE);
 
 		// register response for bookService.findAllBooks() mock
 		Mockito.when(bookService.findAllBooks()).thenReturn(Arrays.asList(bookTo1));
 		// when
-		ResultActions response = this.mockMvc.perform(get("/allBooks").accept(MediaType.APPLICATION_JSON)
+		ResultActions response = this.mockMvc.perform(get("/books/all").accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON).content("1"));
-
+		
 		response.andExpect(status().isOk())//
 				.andExpect(jsonPath("[0].id").value(bookTo1.getId().intValue()))
 				.andExpect(jsonPath("[0].title").value(bookTo1.getTitle()))
 				.andExpect(jsonPath("[0].authors").value(bookTo1.getAuthors()));
 	}
 
-	@Test
-	public void testShouldSaveBook() throws Exception {
-		// given
-		File file = FileUtils.getFileFromClasspath("classpath:pl/spring/demo/web/json/bookToSave.json");
-		String json = FileUtils.readFileToString(file);
-		// when
-		ResultActions response = this.mockMvc.perform(post("/book").accept(MediaType.APPLICATION_JSON)
-				.contentType(MediaType.APPLICATION_JSON).content(json.getBytes()));
-		// then
-		response.andExpect(status().isOk());
-	}
 }
