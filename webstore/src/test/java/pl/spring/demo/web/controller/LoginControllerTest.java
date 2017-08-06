@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.spring.demo.controller.LoginController;
 
-
 public class LoginControllerTest {
 
 	private MockMvc mockMvc;
@@ -31,8 +30,7 @@ public class LoginControllerTest {
 		// when
 		ResultActions resultActions = mockMvc.perform(get("/loginfailed"));
 		// then
-		resultActions
-		.andExpect(view().name("login"));
+		resultActions.andExpect(view().name("login"));
 
 	}
 	

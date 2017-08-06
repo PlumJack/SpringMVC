@@ -6,14 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Error 403</title>
+<title>Book deleted</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Book deleted</h1>
-				<p>The book has been deleted.</p>
+				<p>The book: ${book.title} has been deleted.</p>
 			</div>
 		</div>
 	</section>

@@ -31,7 +31,7 @@
 							<p>Status: ${book.status}</p>
 							<p>
 								<a
-									href=" <spring:url value="/books/book?id=${book.id}" /> "
+									href=" <spring:url value="/books/bookDetails?id=${book.id}" /> "
 									class="btn btn-primary"> <span
 									class="glyphicon-info-sign glyphicon" /></span> Details		
 								</a>

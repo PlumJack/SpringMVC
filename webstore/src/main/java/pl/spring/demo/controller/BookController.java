@@ -53,7 +53,7 @@ public class BookController {
 	// TODO: here implement methods which displays book info based on query
 	// arguments
 
-	@RequestMapping(value = "/book")
+	@RequestMapping(value = "/bookDetails")
 	public ModelAndView bookDetails(@RequestParam("id") int bookId) {
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -68,7 +68,6 @@ public class BookController {
 	public ModelAndView searchBooks() {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		// TODO: implement method gathering and displaying all books
 		modelAndView.setViewName(ViewNames.SEARCH);
 
 		return modelAndView;
@@ -90,8 +89,10 @@ public class BookController {
 	public ModelAndView searchForBooks(@RequestParam("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView();
 		
+		BookTo theBook = bookService.findBookById(id);
 		bookService.deleteBook(id);
 		modelAndView.setViewName(ViewNames.BOOKDELETED);
+		modelAndView.addObject(ModelConstants.BOOK, theBook);
 		
 		return modelAndView;
 	}

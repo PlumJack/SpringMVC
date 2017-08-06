@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import pl.spring.demo.constants.ModelConstants;
+import pl.spring.demo.constants.ViewNames;
 import pl.spring.demo.controller.BookController;
 import pl.spring.demo.enumerations.BookStatus;
 import pl.spring.demo.service.BookService;
@@ -59,6 +60,65 @@ public class BookControllerTest {
 						List<BookTo> listOfAllBooks = (List<BookTo>) argument;
 						assertEquals(2, listOfAllBooks.size());
 						return listOfAllBooks != null;
+					}
+				}));
+	}
+	
+	@Test
+	public void shouldGetBookDetails() throws Exception {
+		// given
+		BookTo theBook = new BookTo(1L, "title1", "author1", BookStatus.FREE);
+		Mockito.when(bookService.findBookById(Mockito.anyLong())).thenReturn(theBook);
+		// when
+		ResultActions resultActions = mockMvc.perform(get("/books/bookDetails?id=3"));
+		// then
+		resultActions.andExpect(view().name(ViewNames.BOOK))
+				.andExpect(model().attribute(ModelConstants.BOOK, new ArgumentMatcher<Object>() {
+					@Override
+					public boolean matches(Object argument) {
+						BookTo book = (BookTo) argument;
+						assertEquals(theBook, book);
+						return book != null;
+					}
+				}));
+	}
+	
+	@Test
+	public void shouldSearchForBooks() throws Exception {
+		// given
+		List<BookTo> listOfBooks = new ArrayList<BookTo>();
+		listOfBooks.add(new BookTo(1L, "title1", "author1", BookStatus.FREE));
+		Mockito.when(bookService.findBooksByTitleAndAuthor("title1","author1")).thenReturn(listOfBooks);
+		// when
+		ResultActions resultActions = mockMvc.perform(get("/books/searchForBooks?title=title1&authors=author1"));
+		// then
+		resultActions.andExpect(view().name(ViewNames.BOOKS))
+				.andExpect(model().attribute(ModelConstants.BOOK_LIST, new ArgumentMatcher<Object>() {
+					@Override
+					public boolean matches(Object argument) {
+						@SuppressWarnings("unchecked")
+						List<BookTo> listOfBooks = (List<BookTo>) argument;
+						assertEquals(1, listOfBooks.size());
+						return listOfBooks != null;
+					}
+				}));
+	}
+	
+	@Test
+	public void shouldDeleteBooks() throws Exception {
+		// given
+		BookTo theBook = new BookTo(1L, "title1", "author1", BookStatus.FREE);
+		Mockito.when(bookService.findBookById(Mockito.anyLong())).thenReturn(theBook);
+		// when
+		ResultActions resultActions = mockMvc.perform(get("/books/deleteBook?id=3"));
+		// then
+		resultActions.andExpect(view().name(ViewNames.BOOKDELETED))
+				.andExpect(model().attribute(ModelConstants.BOOK, new ArgumentMatcher<Object>() {
+					@Override
+					public boolean matches(Object argument) {
+						BookTo book2 = (BookTo) argument;
+						assertEquals(theBook, book2);
+						return book2 != null;
 					}
 				}));
 	}
