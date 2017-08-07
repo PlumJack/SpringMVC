@@ -22,8 +22,6 @@ public class HomeControllerTest {
 	@Before
 	public void setup() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB-INF/templates/");
-		viewResolver.setSuffix(".html");
 
 		mockMvc = MockMvcBuilders.standaloneSetup(new HomeController()).setViewResolvers(viewResolver).build();
 	}

@@ -18,7 +18,6 @@ public class LoginControllerTest {
 	public void setup() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/templates/");
-		viewResolver.setSuffix(".html");
 
 		mockMvc = MockMvcBuilders.standaloneSetup(new LoginController()).setViewResolvers(viewResolver).build();
 	}

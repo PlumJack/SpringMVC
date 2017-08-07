@@ -1,11 +1,9 @@
 package pl.spring.demo.web.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.io.File;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -25,7 +23,6 @@ import org.springframework.web.context.WebApplicationContext;
 import pl.spring.demo.enumerations.BookStatus;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
-import pl.spring.demo.web.utils.FileUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
